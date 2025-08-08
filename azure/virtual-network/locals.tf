@@ -12,5 +12,9 @@ locals {
     vnet-public-subnet-address-prefixes = [
       "10.1.0.0/23"
     ]
+    vnet-private-subnet-name = "vnet-private-subnet"
+    vnet-private-subnet-address-prefixes = [
+      "10.1.2.0/23"
+    ]
   }
 }

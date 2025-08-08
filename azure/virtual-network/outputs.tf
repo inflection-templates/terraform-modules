@@ -12,3 +12,8 @@ output "vnet-public-subnet-id" {
   description = "virtual network public subnet id"
   value       = azurerm_subnet.vnet-public-subnet.id
 }
+
+output "vnet-private-subnet-id" {
+  description = "virtual network private subnet id"
+  value       = azurerm_subnet.vnet-private-subnet.id
+}

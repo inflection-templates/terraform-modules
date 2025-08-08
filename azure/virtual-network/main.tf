@@ -21,3 +21,19 @@ resource "azurerm_subnet" "vnet-public-subnet" {
     azurerm_virtual_network.vnet
   ]
 }
+
+resource "azurerm_subnet" "vnet-private-subnet" {
+  resource_group_name = var.resource-group-properties.rg-name
+
+  name                 = var.virtual-network-properties.vnet-private-subnet-name
+  virtual_network_name = azurerm_virtual_network.vnet.name
+  address_prefixes     = var.virtual-network-properties.vnet-private-subnet-address-prefixes
+
+  service_endpoints = [
+    "Microsoft.Storage"
+  ]
+
+  depends_on = [
+    azurerm_virtual_network.vnet
+  ]
+}
