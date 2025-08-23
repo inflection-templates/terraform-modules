@@ -6,7 +6,7 @@ locals {
     cloudwatch-event-rule-schedule-expression = "rate(10 minutes)"
     cloudwatch-event-rule-state               = "ENABLED"
 
-    cloudwatch-event-target-arn = "arn:aws:lambda:us-west-2:12345678901:function:orphan-resource-tag"
+    cloudwatch-event-target-arn = "arn:aws:lambda:us-west-2:294468937448:function:orphan-resource-tag"
     cloudwatch-event-target-id  = "lamda-tst1"
   }
 }
