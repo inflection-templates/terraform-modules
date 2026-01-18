@@ -68,19 +68,20 @@ resource "azurerm_linux_virtual_machine" "vm-linux-virtual-machine" {
 
   name                            = var.virtual-machine-properties.linux-vm.name
   size                            = var.virtual-machine-properties.linux-vm.size
-  admin_username                  = var.virtual-machine-properties.linux-vm.admin-username
-  admin_password                  = var.virtual-machine-properties.linux-vm.admin-password
   disable_password_authentication = var.virtual-machine-properties.linux-vm.disable-password-authentication
   # custom_data                     = base64encode(file(var.virtual-machine-properties.linux-vm.custom-data))
+
+  admin_username                  = var.virtual-machine-properties.linux-vm.admin-username
+  # admin_password                  = var.virtual-machine-properties.linux-vm.admin-password
+
+  admin_ssh_key {
+    username   = var.virtual-machine-properties.linux-vm.admin-ssh-key-username
+    public_key = file(var.virtual-machine-properties.linux-vm.admin-ssh-public-key)
+  }
 
   network_interface_ids = [
     azurerm_network_interface.vm-network-interface.id
   ]
-
-  # admin_ssh_key {
-  #   username   = var.virtual-machine-properties.linux-vm.admin-ssh-key-username
-  #   public_key = tls_private_key.secureadmin_ssh.public_key_openssh
-  # }
 
   os_disk {
     name                 = var.virtual-machine-properties.linux-vm.os-disk-name
